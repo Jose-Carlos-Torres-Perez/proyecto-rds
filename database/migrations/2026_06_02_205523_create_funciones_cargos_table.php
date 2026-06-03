@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('funciones_cargos', function (Blueprint $table) {
             $table->id();
+            $table->string('descripcion_funcion');
+            $table->string('estado');
+            $table->foreignId('cargo_id');
             $table->timestamps();
         });
     }

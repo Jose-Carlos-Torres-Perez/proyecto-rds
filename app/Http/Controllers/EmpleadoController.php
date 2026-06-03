@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Empleado;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class EmpleadoController extends Controller
 {
@@ -12,7 +14,9 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        //
+       $empleados=Empleado::all();
+
+       return response()->json($empleados,200);
     }
 
     /**
@@ -28,7 +32,43 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $validator=validator::make($request->all(),[
+        'nombres'=>'required',
+        'apellidos'=>'required',
+        'fecha_nacimiento'=>'required',
+        'fecha_ingreso'=>'required',
+        'salario'=>'required',
+        'estado'=>'required'
+
+       ]);
+       if($validator->fails()){
+        $data=[
+            'message'=>'error en la validacion de los datos',
+            'errors'=>$validator->errors(),
+            'estatus'=>'400'
+        ];
+        return response()->json($data,400);
+       }
+       $empleado=Empleado::create([
+        'nombres'=>$request->nombres,
+        'apellidos'=>$request->apellidos,
+        'fecha_nacimiento'=>$request->fecha_nacimiento,
+        'fecha_ingreso'=>$request->fecha_ingreso,
+        'salario'=>$request->salario,
+        'estado'=>$request->estado
+       ]);
+       if(!$empleado){
+        $data=[
+        'message'=>'erro al crear un empleado',
+        'status'=>500
+        ];
+        return response()->json($data,500);
+       }
+       $data=[
+        'empleado'=>$empleado,
+        'status'=>201
+       ];
+       return response()->json($data,201);
     }
 
     /**
