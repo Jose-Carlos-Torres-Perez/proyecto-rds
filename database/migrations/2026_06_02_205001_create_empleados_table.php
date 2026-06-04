@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('funciones_cargos', function (Blueprint $table) {
+        Schema::create('empleados', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion_funcion');
+            $table->foreignId('cargo_id')->constrained()->cascadeOnUpdate()->restrictOnDelete();
+            $table->string('nombres');
+            $table->string('apellidos');
+            $table->date('fecha_nacimiento');
+            $table->date('fecha_ingreso');
+            $table->decimal('salario');
             $table->string('estado');
-            $table->foreignId('cargo_id');
             $table->timestamps();
         });
     }
@@ -25,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('funciones_cargos');
+        Schema::dropIfExists('empleados');
     }
 };

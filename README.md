@@ -56,3 +56,30 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+Estructura para probar las endpoint de los diferentes verbos http
+
+Verbo GET
+
+curl -X GET http://localhost:8000/api/cargos
+curl -X GET http://localhost:8000/api/empleados
+curl -X GET http://localhost:8000/api/funcionescargo
+
+Verbo POST
+
+curl  -X POST http://localhost:8000/api/cargos  -H "Accept: application/json" -H "Content-Type: application/json" -d '{"nombre_cargo":"el cargo que deseamos agregar","descripcion":"la descripcion referente al cargo "}'
+
+
+Verbo PUT 
+dentro de la pedicion colocamos el numero del id que deseamos actualizar
+
+curl  -X PUT http://localhost:8000/api/cargos/1  -H "Accept: application/json" -H "Content-Type: application/json" -d '{"nombre_cargo":"el cargo que deseamos actualizar","descripcion":"la descripcion actualizada referente al cargo "}'
+
+Verbo DELETE
+
+dentro de la pedicion colocamos el numero del id que deseamos eliminar
+
+
+curl -X DELETE http://localhost:8000/api/cargos/1 
+
+

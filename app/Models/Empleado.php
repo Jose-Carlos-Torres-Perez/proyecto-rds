@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 
 
 class Empleado extends Model
@@ -21,8 +22,8 @@ class Empleado extends Model
     'salario',
     'estado'
     ];
-    public function cargos(): HasMany
+    public function cargo(): BelongsTo
     {
-        return $this->hasMany(Cargo::class);
+        return $this->belongsTo(Cargo::class);
     }
 }
