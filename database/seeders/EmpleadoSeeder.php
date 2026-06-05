@@ -12,7 +12,7 @@ class EmpleadoSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Cargo::factory(3)->create();
+        
         \App\Models\FuncionesCargo::factory(9)->create();
        \App\Models\Empleado::factory(12)->create();
     }

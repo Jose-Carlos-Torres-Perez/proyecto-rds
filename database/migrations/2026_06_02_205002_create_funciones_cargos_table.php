@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('funciones_cargos', function (Blueprint $table) {
             $table->id();
-           $table->foreignId('cargo_id')->cascadeOnDelete();
+           $table->foreignId('cargo_id')->constrained()->cascadeOnDelete();
             $table->string('descripcion_funcion');
             $table->string('estado');
             $table->timestamps();

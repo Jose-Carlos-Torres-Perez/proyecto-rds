@@ -82,7 +82,7 @@ class FuncionesCargoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, FuncionesCargo $funciones)
+    public function update(Request $request, FuncionesCargo $funcionescargo)
     {
       $validator=Validator::make($request->all(),[
         'cargo_id'=>'required',
@@ -97,26 +97,26 @@ class FuncionesCargoController extends Controller
         ];
         return response()->json([$data,400]);
      }
-     $funciones->update([
+     $funcionescargo->update([
         'cargo_id'=>$request->cargo_id,
         'descripcion_funcion'=>$request->descripcion_funcion,
         'estado'=>$request->estado
      ]);
-     if (!$funciones) {
+     if (!$funcionescargo) {
         $data=['message'=>'error al crear una funcion','status',500];
         
         return response()->json($data,500);
      }  
-     $data=['funciones'=>$funciones,'status',201];
+     $data=['funcionescargo'=>$funcionescargo,'status',201];
      return response()->json($data,201);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(FuncionesCargo $funciones)
+    public function destroy(FuncionesCargo $funcionescargo)
     {
-    $funciones->delete();
+    $funcionescargo->delete();
     return response()->json(['message'=>'eliminado con exito'],200);
     }
 }

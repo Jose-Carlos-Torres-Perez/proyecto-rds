@@ -12,8 +12,8 @@ class FuncionesCargo extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id_cargo',
-        'descipcion_funcion',
+        'cargo_id',
+        'descripcion_funcion',
         'estado'
     ];
     public function cargo():BelongsTo

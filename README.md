@@ -83,3 +83,6 @@ dentro de la pedicion colocamos el numero del id que deseamos eliminar
 curl -X DELETE http://localhost:8000/api/cargos/1 
 
 
+
+el funciona asi y si funciona dejelo asi 
+

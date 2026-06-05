@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\CargoController;
+use App\Http\Controllers\FuncionesCargoController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -17,3 +18,8 @@ Route::get('/cargos',[CargoController::class,'index']);
 Route::post('/cargos',[CargoController::class,'store']);
 Route::put('/cargos/{cargo}',[CargoController::class,'update']);
 Route::delete('/cargos/{cargo}',[CargoController::class,'destroy']);
+
+Route::get('/funcionescargos',[FuncionesCargoController::class,'index']);
+Route::post('/funcionescargos',[FuncionesCargoController::class,'store']);
+Route::put('/funcionescargos/{funcionescargo}',[FuncionesCargoController::class,'update']);
+Route::delete('/funcionescargos/{funcionescargo}',[FuncionesCargoController::class,'destroy']);
