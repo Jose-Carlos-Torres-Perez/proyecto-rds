@@ -32,6 +32,7 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
+       
        $validator=validator::make($request->all(),[
         'cargo_id'=>'required',
         'nombres'=>'required',

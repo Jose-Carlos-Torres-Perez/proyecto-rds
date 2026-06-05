@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('empleados', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cargo_id')->constrained()->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreignId('cargo_id')->constrained()->cascadeOnDelete();
             $table->string('nombres');
             $table->string('apellidos');
             $table->date('fecha_nacimiento');

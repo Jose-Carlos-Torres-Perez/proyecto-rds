@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+
 class CargoSeeder extends Seeder
 {
     /**
@@ -12,6 +13,6 @@ class CargoSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+    
     }
 }

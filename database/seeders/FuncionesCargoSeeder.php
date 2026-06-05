@@ -12,6 +12,6 @@ class FuncionesCargoSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        
     }
 }

@@ -12,6 +12,7 @@ class FuncionesCargo extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id_cargo',
         'descipcion_funcion',
         'estado'
     ];

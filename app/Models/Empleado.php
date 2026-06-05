@@ -14,7 +14,7 @@ class Empleado extends Model
     use HasFactory;
 
     protected $fillable = [
-
+    'cargo_id',
     'nombres',
     'apellidos',
     'fecha_nacimiento',

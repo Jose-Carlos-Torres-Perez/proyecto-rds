@@ -18,7 +18,8 @@ class CargoFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+           'nombre_cargo'=>$this->faker->jobTitle(),
+        'descripcion'=>$this->faker->paragraph()
         ];
     }
 }
