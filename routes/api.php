@@ -5,10 +5,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\CargoController;
 use App\Http\Controllers\FuncionesCargoController;
+use App\Http\Controllers\UserController;
 
-Route::get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->group(function(){
+Route::get('/user',  function (Request $request) {
     return $request->user();
-})->middleware('auth:sanctum');
+});
 Route::get('/empleados',[EmpleadoController::class,'index']);
 Route::post('/empleados',[EmpleadoController::class,'store']);
 Route::put('/empleados/{empleado}',[EmpleadoController::class,'update']);
@@ -23,3 +25,7 @@ Route::get('/funcionescargos',[FuncionesCargoController::class,'index']);
 Route::post('/funcionescargos',[FuncionesCargoController::class,'store']);
 Route::put('/funcionescargos/{funcionescargo}',[FuncionesCargoController::class,'update']);
 Route::delete('/funcionescargos/{funcionescargo}',[FuncionesCargoController::class,'destroy']);
+
+Route::post('/users',[UserController::class,'store']);
+Route::post('/sesion',[UserController::class,'login']);
+});
