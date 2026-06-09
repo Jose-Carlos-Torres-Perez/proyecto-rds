@@ -84,7 +84,7 @@ curl -X DELETE http://localhost:8000/api/cargos/1
 
 
 
-el funciona asi y si funciona dejelo asi 
+
 
 forma de usar las endpoint   verificando el tokens
 $ curl -X GET http://localhost:8000/api/empleados -H "Accept: application/json" -H "authorization: Bearer 2|kuVGNbpS9ixkEe5CEMTseOmp0qBAtF6ML9guHCFR875de027"

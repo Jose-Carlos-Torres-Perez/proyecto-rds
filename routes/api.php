@@ -26,6 +26,8 @@ Route::post('/funcionescargos',[FuncionesCargoController::class,'store']);
 Route::put('/funcionescargos/{funcionescargo}',[FuncionesCargoController::class,'update']);
 Route::delete('/funcionescargos/{funcionescargo}',[FuncionesCargoController::class,'destroy']);
 
+
+
+});
 Route::post('/users',[UserController::class,'store']);
 Route::post('/sesion',[UserController::class,'login']);
-});

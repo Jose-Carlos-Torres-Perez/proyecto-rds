@@ -54,7 +54,7 @@ class UserController extends Controller
     if($validator->fails()){
 
         $data=[
-            'message'=>'los datos esperado sion incorrectos',
+            'message'=>'los datos esperado son incorrectos',
             'errors'=>$validator->errors(),
         ];
         return response()->json($data,400);
