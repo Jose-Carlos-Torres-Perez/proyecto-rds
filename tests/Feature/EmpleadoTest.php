@@ -33,14 +33,6 @@ test('puede crear un empleado', function () {
 test('puede ver los empleados ', function () {
      $user=User::factory()->create();
     Sanctum::actingAs($user);
-   $cargo = \App\Models\Cargo::factory()->create();
-
-    $datos = \App\Models\Empleado::factory()
-        ->make([
-            'cargo_id' => $cargo->id
-        ])
-        ->toArray();
-    
     $respuesta = $this->getJson('/api/empleados');
     $respuesta->assertStatus(200);
     
