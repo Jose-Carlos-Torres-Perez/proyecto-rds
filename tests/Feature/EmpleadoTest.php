@@ -2,10 +2,15 @@
 
 use App\Models\Cargo;
 use App\Models\Empleado;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Sanctum\Sanctum;
+
 uses(RefreshDatabase::class);
 
 test('puede crear un empleado', function () {
+    $user=User::factory()->create();
+    Sanctum::actingAs($user);
    $cargo = \App\Models\Cargo::factory()->create();
 
     $datos = \App\Models\Empleado::factory()
@@ -26,6 +31,8 @@ test('puede crear un empleado', function () {
     
 });
 test('puede ver los empleados ', function () {
+     $user=User::factory()->create();
+    Sanctum::actingAs($user);
    $cargo = \App\Models\Cargo::factory()->create();
 
     $datos = \App\Models\Empleado::factory()
@@ -43,6 +50,9 @@ test('puede ver los empleados ', function () {
 
 
 test('puede actualizar un empleado', function () {
+    $user=User::factory()->create();
+    Sanctum::actingAs($user);
+
    $cargo= \App\Models\Cargo::factory()->create();
 
     $datos = \App\Models\Empleado::factory()
@@ -66,6 +76,9 @@ test('puede actualizar un empleado', function () {
 });
 
 test('puede eliminar un empleado', function () {
+    $user=User::factory()->create();
+    Sanctum::actingAs($user);
+    
    $cargo= \App\Models\Cargo::factory()->create();
 
     $datos = \App\Models\Empleado::factory()
