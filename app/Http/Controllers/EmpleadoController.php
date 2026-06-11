@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Empleado;
-
+use App\Models\FuncionesCargo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -12,6 +12,28 @@ class EmpleadoController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function detalleempleado(){
+
+    $empleado=Empleado::with(['cargo:id,nombre_cargo',
+    'cargo.funcionescargos:id,cargo_id,descripcion_funcion'
+    ])->Select( 'id', 'nombres','apellidos','cargo_id')->get();
+
+    $resultado=$empleado->map(function ($item) {
+    return [
+        'nombre' => $item->nombres,
+        'apellido' => $item->apellidos,
+        'cargo' => [
+            'nombre_cargo' => $item->cargo->nombre_cargo,
+            'funciones' => $item->cargo->funcionescargos
+                ->pluck('descripcion_funcion')
+        ]
+    ];
+});
+    
+  
+
+    return response()->json($resultado);
+    }
     public function index()
     {
        $empleados=Empleado::all();
