@@ -31,4 +31,4 @@ Route::delete('/funcionescargos/{funcionescargo}',[FuncionesCargoController::cla
 });
 Route::post('/users',[UserController::class,'store']);
 Route::post('/sesion',[UserController::class,'login']);
-Route::get('/funcionescargo',[EmpleadoController::class,'detalleempleado']);
+Route::get('/detalleempleado/{empleado}',[EmpleadoController::class,'detalleempleado']);

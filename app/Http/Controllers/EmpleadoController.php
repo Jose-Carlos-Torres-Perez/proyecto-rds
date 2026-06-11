@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cargo;
 use App\Models\Empleado;
 use App\Models\FuncionesCargo;
 use Illuminate\Http\Request;
@@ -12,27 +13,23 @@ class EmpleadoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function detalleempleado(){
+    public function detalleempleado( Empleado $empleado){
 
-    $empleado=Empleado::with(['cargo:id,nombre_cargo',
-    'cargo.funcionescargos:id,cargo_id,descripcion_funcion'
-    ])->Select( 'id', 'nombres','apellidos','cargo_id')->get();
+   $cargo= Cargo::where('id',$empleado['cargo_id'])->first();
 
-    $resultado=$empleado->map(function ($item) {
-    return [
-        'nombre' => $item->nombres,
-        'apellido' => $item->apellidos,
-        'cargo' => [
-            'nombre_cargo' => $item->cargo->nombre_cargo,
-            'funciones' => $item->cargo->funcionescargos
-                ->pluck('descripcion_funcion')
-        ]
-    ];
-});
+   $funciones=FuncionesCargo::where('cargo_id',$empleado['cargo_id'])->get();
+   $contenedor="";
+   foreach ($funciones as $funcion) {
+    $contenedor=$contenedor.",".$funcion['descripcion_funcion'];
+   }
+   
+
+   $datos=['nombre_empleado'=>$empleado['nombres'],'cargo_asignado'=>$cargo['nombre_cargo'],'salario'=>$empleado['salario'],'funciones_cargo'=>$contenedor];
+    return response()->json($datos);
     
   
 
-    return response()->json($resultado);
+    //return response()->json($empleado);
     }
     public function index()
     {
