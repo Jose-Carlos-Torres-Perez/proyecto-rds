@@ -15,6 +15,7 @@ Route::get('/empleados',[EmpleadoController::class,'index']);
 Route::post('/empleados',[EmpleadoController::class,'store']);
 Route::put('/empleados/{empleado}',[EmpleadoController::class,'update']);
 Route::delete('/empleados/{empleado}',[EmpleadoController::class,'destroy']);
+Route::get('/detalleempleado/{empleado}',[EmpleadoController::class,'detalleempleado']);
 
 Route::get('/cargos',[CargoController::class,'index']);
 Route::post('/cargos',[CargoController::class,'store']);
@@ -31,4 +32,4 @@ Route::delete('/funcionescargos/{funcionescargo}',[FuncionesCargoController::cla
 });
 Route::post('/users',[UserController::class,'store']);
 Route::post('/sesion',[UserController::class,'login']);
-Route::get('/detalleempleado/{empleado}',[EmpleadoController::class,'detalleempleado']);
+

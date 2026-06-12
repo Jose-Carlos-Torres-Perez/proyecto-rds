@@ -2,6 +2,7 @@
 
 use App\Models\Cargo;
 use App\Models\Empleado;
+use App\Models\FuncionesCargo;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
@@ -83,4 +84,14 @@ test('puede eliminar un empleado', function () {
 
         $respuesta->assertStatus(200);
     
+});
+
+test('muestra detalle de empleado',function(){
+$user=User::factory()->create();
+Sanctum::actingAs($user);
+$cargo=Cargo::factory()->create();
+$empleado=Empleado::factory()->create(['cargo_id'=>$cargo->id]);
+$respuesta=$this->getJson("/api/detalleempleado/{$empleado->id}");
+$respuesta->assertStatus(200);
+
 });
